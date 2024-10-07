@@ -77,6 +77,7 @@
         },
       });
 
+      //component form parent
       app.component('login-form', {
         // exp for in v, <p v-for="(input, i) in inputs" :key="i">{{ input }}</p>
 
@@ -131,6 +132,8 @@
             }
         }
       })
+
+      // child component
       app.component('custom-input', {
         template: `
             <label>
