@@ -36,17 +36,21 @@
         <!-- {{ greeting }} -->
         <!-- <input @keyup.enter="greet(greeting + 'ini adalah tambahan kata')" v-model="greeting" /> v-model is Directive feature from Vue -->
 
-        <login-form />
+        <!-- <login-form /> -->
 
-        <hr />
+        <!-- <hr /> -->
 
         <!-- version toggle box without call function method -->
         <!-- <button @click="isVisible = !isVisible">Toggle Box</button>  @click is Directive origin v-on:click vue -->
 
         <!--  version toggle box with call function method toggleBox -->
-        <button @click="toggleBox">Toggle Box</button>
+        <!-- <button @click="toggleBox">Toggle Box</button> -->
 
-        <div v-if="isVisible" class="box"></div>
+        <!-- update box to be set in component for tes lifeciycle hooks-->
+        <button @click="toggleBox">Toogle Box</button>
+        <!-- <div v-if="isVisible" class="box"></div> -->
+        <test-box v-if="isVisible" /> 
+
         <!--  v-if directive -->
         <!-- <div v-else-if="isVisible2" class="box two"></div>
         <div v-else class="box three"></div> example for test directive v-if and v-else-if and thruty-->
@@ -63,18 +67,21 @@
           // data is a function that returns an object
           return {
             greeting: "Assalamualikum Vue 3",
-            isVisible: false,
+            isVisible: false
             // isVisible2: true -example for test directive v-if and v-else-if and thruty
-          };
+          }
         },
         methods: {
-          toggleBox() {
+          toggleBox: function() {
             this.isVisible = !this.isVisible;
           },
           greet(greeting) {
-            console.log(greeting);
+            console.log(greeting)
           },
         },
+        updated() {
+            console.log('updated');
+        }
       });
 
       //component form parent
@@ -158,6 +165,23 @@
         //     }
         // }
       })
+
+      // componet tooglebox for test lifcycle hooks
+      app.component('test-box', {
+        template: `
+            <div class="box"></div>
+        `,
+        created() {
+            console.log('created');
+        },
+        mounted() {
+            console.log('mounted');
+        },
+        unmounted() {
+            console.log('unmounted');
+        }
+      })
+
       app.mount("#app"); // mount the app to the element with id app
     </script>
   </body>
