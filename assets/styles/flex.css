@@ -1,0 +1,39 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Flexbox Container */
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.header,
+.footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  padding: 20px;
+}
+
+.sidebar {
+  flex: 1;
+  background-color: #f4f4f4;
+  padding: 20px;
+}
+
+.content {
+  flex: 2;
+  background-color: #fff;
+  padding: 20px;
+  margin-left: 20px;
+}

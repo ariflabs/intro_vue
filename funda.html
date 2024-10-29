@@ -4,15 +4,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vue JS Fundamentals</title>
-
+    <!-- import css -->
+    <link rel="stylesheet" href="assets/styles/style.css">
+    <!-- import Vue js -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
 </head>
 <body>
     <div id="app">
-        <h1>{{ msg }}</h1>
-        <img :src="sampleImg" />
-        <div v-for="list in lists">{{ list }}</div>
+        <div class="header">
+            <div class="logo">V-Comerce</div>
+            <div class="cart">Cart ({{ cart }})</div>
+        </div>
+        <div class="container">
+            <h1>Product</h1>
+            <div class="product">
+                <div class="img-product-container">
+                    <img class="img-product" :src="image" alt="coffee machine">
+                </div>
+                <div>
+                    <h2>{{ title }}</h2>
+                    <p v-if="inStock > 10">In Stock</p>
+                    <p v-else-if="inStock <= 10 && stock > 0">Almost sold out</p>
+                    <p v-else>Out of stock</p>
+                    <p>Stock: {{ inStock }}</p>
+
+                    <ul>
+                        <li v-for="detail in details">{{ detail }}</li>
+                    </ul>
+
+                    <div
+                        class="variants-circle"
+                        :style="{ backgroundColor: variant.color }"
+                        v-for="(variant,index) in variants"
+                        :key="variant.id"
+                        @mouseover="updateVariant(index)">
+                        {{}}
+                    </div>
+
+                    <button
+                        class="btn-add-to-cart"
+                        :class="{ disabledButton: !inStock }"
+                        :disabled="!inStock"
+                        @click="addToCart">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+
+
+        </div>
     </div>
 
     <!-- import App Vue -->
