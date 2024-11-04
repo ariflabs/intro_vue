@@ -42,6 +42,12 @@
     margin-right: 5px;
 }
 
+.btn-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
 .btn-add-to-cart {
     display: block;
     background-color: rgb(200, 130, 230);
@@ -53,8 +59,23 @@
     cursor: pointer;
 }
 
+.btn-remove-from-cart {
+    display: block;
+    background-color: rgb(237, 113, 140);
+    color: white;
+    font-weight: bold;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
 .btn-add-to-cart:hover {
     background-color: rgb(210, 130, 210);
+}
+
+.btn-remove-from-cart:hover {
+    background-color: rgb(179, 126, 137);
 }
 
 .disabledButton {

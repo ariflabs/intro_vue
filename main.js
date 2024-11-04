@@ -1,34 +1,23 @@
 const app = Vue.createApp({
     data: function() {
         return {
-            cart: 0,
-            product: 'Coffee Machine',
-            brand:'V-comerce',
-            selectedVariant: 0,
-            details: ['with grinder', 'espresso maker', 'steam milk'],
-            variants: [
-                { id: 1123, color: 'black', image: './assets/coffee-machine-black.jpg', quantity: 30 },
-                { id: 1124, color: 'white', image: './assets/coffee-machine-white.jpg', quantity: 0 }
-            ]
+            cart: [],
+            premium: false
         }
     },
     methods: {
-        addToCart() {
-            this.cart += 1
+        updateCart(id) {
+            this.cart.push(id)
         },
-        updateVariant(index) {
-            this.selectedVariant = index
+        removeById(id) {
+            // find the index of the id in the cart
+            const index = this.cart.indexOf(id)
+
+            // if the id is found, remove it from the cart
+            if (index > -1) {
+                this.cart.splice(index, 1)
+            }
         }
-    },
-    computed: {
-        title() {
-            return this.brand + ' ' + this.product
-        },
-        image() {
-            return this.variants[this.selectedVariant].image
-        },
-        inStock() {
-            return this.variants[this.selectedVariant].quantity
-        }
+
     }
 });
